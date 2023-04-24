@@ -9,7 +9,9 @@ class ScreenCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CounterBlocBloc, CounterBlocState>(
+    return
+        // BlocBuilder<CounterCubit, CounterState>(
+        BlocBuilder<CounterBlocBloc, CounterBlocState>(
       builder: (context, state) {
         return Scaffold(
           body: SafeArea(
@@ -33,7 +35,8 @@ class ScreenCounter extends StatelessWidget {
             children: [
               FloatingActionButton(
                 onPressed: () {
-                  context.read<CounterCubit>().increment();
+                  // context.read<CounterCubit>().increment();
+                  context.read<CounterBlocBloc>().add(Increment());
                 },
                 child: const Icon(Icons.add),
               ),
@@ -42,7 +45,8 @@ class ScreenCounter extends StatelessWidget {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  context.read<CounterCubit>().decrement();
+                  // context.read<CounterCubit>().decrement();
+                  context.read<CounterBlocBloc>().add(Decrement());
                 },
                 child: const Icon(Icons.remove),
               ),
