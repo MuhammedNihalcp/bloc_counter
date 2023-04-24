@@ -7,13 +7,23 @@ part 'counter_bloc_state.dart';
 
 class CounterBlocBloc extends Bloc<CounterBlocEvent, CounterBlocState> {
   CounterBlocBloc() : super(CounterBlocInitial()) {
-    on<CounterBlocEvent>((event, emit) {
-      if (event is Increment) {
-        emit(CounterBlocState(counterValue: state.counterValue + 1));
-      }
-      if (event is Decrement) {
-        emit(CounterBlocState(counterValue: state.counterValue - 1));
-      }
-    });
+    // on<CounterBlocEvent>((event, emit) {
+    //   if (event is Increment) {
+    //     emit(CounterBlocState(counterValue: state.counterValue + 1));
+    //   }
+    //   if (event is Decrement) {
+    //     emit(CounterBlocState(counterValue: state.counterValue - 1));
+    //   }
+    // });
+    on<Increment>(
+      (event, emit) => emit(
+        CounterBlocState(counterValue: state.counterValue + 1),
+      ),
+    );
+    on<Decrement>(
+      (event, emit) => emit(
+        CounterBlocState(counterValue: state.counterValue - 1),
+      ),
+    );
   }
 }
